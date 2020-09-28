@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vy-app {
+  position: relative;
+  border: 1px solid #ccc;
+  height: 800px;
+  width: 400px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.vy-container {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: left .2s;
+}
