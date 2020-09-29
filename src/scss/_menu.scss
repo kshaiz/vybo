@@ -1,0 +1,48 @@
+.vy-menu {
+  --vy-menu--dimension: 2.5em;
+  --vy-menu--spacing: .5em;
+
+  position: absolute;
+  top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f7f7f7;
+  border-radius: 100em;
+  height: var(--vy-menu--dimension);
+  width: var(--vy-menu--dimension);
+  background-color: #fcfcfc;
+  background: center no-repeat;
+  background-size: calc(var(--vy-menu--dimension) - 2 * var(--vy-menu--spacing));
+  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
+
+  &.is-back {
+    left: 1em;
+    background-image: url("/asset/img/back.svg");
+  }
+
+  &.is-undo {
+    right: calc(50% + .125em);
+    border: 0;
+    background-image: url("/asset/img/undo.svg");
+    box-shadow: none;
+  }
+
+  &.is-redo {
+    left: calc(50% + .125em);
+    border: 0;
+    background-image: url("/asset/img/redo.svg");
+    box-shadow: none;
+  }
+
+
+  &.is-add {
+    right: calc(1em + var(--vy-menu--dimension) + var(--vy-menu--spacing));
+    background-image: url("/asset/img/add-user.svg");
+  }
+
+  &.is-setting {
+    right: 1em;
+    background-image: url("/asset/img/setting.svg");
+  }
+}

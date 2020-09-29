@@ -1,0 +1,100 @@
+
+.vy-toolbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 2.5em;
+  grid-template-rows: 2.5em;
+  grid-column-gap: .15em;
+  justify-content: center;
+  padding: .5em .5em;
+  background-color: #fcfcfc;
+  border-top: 1px solid #e7e7e7;
+}
+
+.vy-tool {
+  border-radius: .25em;
+  background: center no-repeat;
+  background-size: 2em;
+  transition: background-position .2s;
+  
+  &.is-pen {
+    background-image: url("/asset/img/pen-black.svg");
+  }
+  
+  &.is-pen.is-red {
+    background-image: url("/asset/img/pen-red.svg");
+  }
+  
+  &.is-pen.is-green {
+    background-image: url("/asset/img/pen-green.svg");
+  }
+  
+  &.is-pen.is-blue {
+    background-image: url("/asset/img/pen-blue.svg");
+  }
+  
+  &.is-pen.is-rgb {
+    background-image: url("/asset/img/pen-rgb.svg");
+  }
+  
+  &.is-highlighter {
+    background-image: url("/asset/img/highlighter-yellow.svg");
+  }
+  
+  &.is-highlighter.is-red {
+    background-image: url("/asset/img/highlighter-red.svg");
+  }
+  
+  &.is-highlighter.is-green {
+    background-image: url("/asset/img/highlighter-green.svg");
+  }
+  
+  &.is-highlighter.is-blue {
+    background-image: url("/asset/img/highlighter-blue.svg");
+  }
+  
+  &.is-highlighter.is-rgb {
+    background-image: url("/asset/img/highlighter-rgb.svg");
+  }
+  
+  &.is-eraser {
+    background-image: url("/asset/img/eraser.svg");
+  }
+  
+  &.is-add {
+    background-image: url("/asset/img/add.svg");
+  }
+  
+  &.is-more {
+    background-image: url("/asset/img/more.svg");
+  }
+  
+  &.is-done {
+    background-image: url("/asset/img/done.svg");
+  }
+}
+
+.vy-tool {
+  &.is-active {
+    background-color: #e2e2fc;
+  }
+}
+
+.vy-toolbar {
+  &.is-level-2 {
+    .vy-tool {
+      &.is-pen,
+      &.is-eraser,
+      &.is-highlighter {
+        &:not(.is-active) {
+          background-position: center 5px;
+          border: .5em solid #fcfcfc;
+        }
+      }
+    }
+  }
+}
