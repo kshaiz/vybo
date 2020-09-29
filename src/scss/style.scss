@@ -6,6 +6,15 @@
 // @import "compass/reset";
 @import "common.scss";
 @import "home.scss";
+@import "menu.scss";
+@import "toast.scss";
+@import "toolbar.scss";
+@import "callout.scss";
+
+:root {
+  --c-border: #e7e7e7;
+  --c-font-color: #3a3a3a;
+}
 
 .vy-button {
   border-radius: .25em;
@@ -39,185 +48,4 @@
 .vy-whiteboard__item__footer__title {
   font-size: 1em;
   color: #3a3a3a;
-}
-
-.vy-menu {
-  position: absolute;
-  top: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #f7f7f7;
-  border-radius: 100em;
-  height: 3em;
-  width: 3em;
-  background-color: #fcfcfc;
-  background: center no-repeat;
-  background-size: 2em;
-  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
-}
-
-.vy-back {
-  left: 1em;
-  background-image: url("/asset/img/back.svg");
-}
-
-.vy-undo {
-  right: calc(50% + .125em);
-  border: 0;
-  background-image: url("/asset/img/undo.svg");
-  box-shadow: none;
-}
-
-.vy-redo {
-  left: calc(50% + .125em);
-  opacity: .5;
-  border: 0;
-  background-image: url("/asset/img/redo.svg");
-  box-shadow: none;
-}
-
-.vy-add {
-  right: calc(1em + 3em + 1em);
-  background-image: url("/asset/img/add-user.svg");
-}
-
-.vy-setting {
-  right: 1em;
-  background-image: url("/asset/img/setting.svg");
-}
-
-.vy-toolbar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 2.5em;
-  grid-template-rows: 2.5em;
-  grid-column-gap: .15em;
-  justify-content: center;
-  padding: .5em .5em;
-  background-color: #fcfcfc;
-  border-top: 1px solid #e7e7e7;
-}
-
-.vy-tool {
-  border-radius: .25em;
-  /* border: 1px solid #e7e7e7; */
-  background: center no-repeat;
-  background-size: 2em;
-  transition: background-position .2s;
-}
-
-.vy-tool.is-active {
-  background-color: #e2e2fc;
-}
-
-.vy-tool.is-pen {
-  background-image: url("/asset/img/pen-black.svg");
-}
-
-.vy-tool.is-pen.is-red {
-  background-image: url("/asset/img/pen-red.svg");
-}
-
-.vy-tool.is-pen.is-green {
-  background-image: url("/asset/img/pen-green.svg");
-}
-
-.vy-tool.is-pen.is-blue {
-  background-image: url("/asset/img/pen-blue.svg");
-}
-
-.vy-tool.is-pen.is-rgb {
-  background-image: url("/asset/img/pen-rgb.svg");
-}
-
-.vy-tool.is-highlighter {
-  background-image: url("/asset/img/highlighter-yellow.svg");
-}
-
-.vy-tool.is-highlighter.is-red {
-  background-image: url("/asset/img/highlighter-red.svg");
-}
-
-.vy-tool.is-highlighter.is-green {
-  background-image: url("/asset/img/highlighter-green.svg");
-}
-
-.vy-tool.is-highlighter.is-blue {
-  background-image: url("/asset/img/highlighter-blue.svg");
-}
-
-.vy-tool.is-highlighter.is-rgb {
-  background-image: url("/asset/img/highlighter-rgb.svg");
-}
-
-.vy-tool.is-eraser {
-  background-image: url("/asset/img/eraser.svg");
-}
-
-.vy-tool.is-add {
-  background-image: url("/asset/img/add.svg");
-}
-
-.vy-tool.is-more {
-  background-image: url("/asset/img/more.svg");
-}
-
-.vy-tool.is-done {
-  background-image: url("/asset/img/done.svg");
-}
-
-.vy-toolbar.is-level-2 .vy-tool.is-pen:not(.is-active),
-.vy-toolbar.is-level-2 .vy-tool.is-eraser:not(.is-active),
-.vy-toolbar.is-level-2 .vy-tool.is-highlighter:not(.is-active) {
-  background-position: center 5px;
-  border: .5em solid #fcfcfc;
-}
-
-.vy-callout {
-  position: absolute;
-  bottom: 4em;
-  border: 1px solid #e7e7e7;
-  padding: .5em;
-  border-radius: .25em;
-  display: grid;
-  grid-gap: .5em;
-  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
-}
-
-.vy-callout.is-rgb {
-  left: 12em;
-  grid-template-columns: 2em 2em 2em;
-  grid-template-rows: 2em 2em 2em;
-}
-
-.vy-color {
-  border: 1px solid #e7e7e7;
-  border-radius: .25em;
-}
-
-.vy-callout.is-more {
-  left: 19.5em;
-  grid-template-columns: 2em;
-  grid-auto-rows: 2em;
-}
-
-.vy-stroke-width {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: .25em;
-}
-
-.vy-stroke-width>div {
-  border-radius: 100em;
-}
-
-.vy-stroke-width.is-active {
-  background-color: #e2e2fc;
 }
