@@ -32,3 +32,16 @@ body {
   width: 100%;
   transition: left .2s;
 }
+
+.has-margin--top {
+  margin-top: 1em;
+}
+
+p {
+  margin: 0;
+  font-size: .85em;
+
+  &.is-large {
+    font-size: 1.5em;
+  }
+}

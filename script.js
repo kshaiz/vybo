@@ -52,6 +52,10 @@ function initializeMenu() {
   $(".vy-menu.vy-back").click(() => {
     initializeHome()
   })
+
+  $(".vy-menu.is-setting").click(() => {
+    initializeSetting();
+  })
 }
 
 function initializeToast() {
@@ -155,5 +159,21 @@ function initializeTool(tool) {
         }
       })
     });
+  })
+}
+
+function initializeSetting() {
+  loadContent({
+    file: "/page/whiteboard/setting/content.html",
+    parent: document.querySelector(".vy-setting"),
+    callback: () => {
+      $(".vy-setting").fadeIn("fast");
+      $(".vy-setting .vy-setting__menu").css("right", "0");
+
+      $(".vy-setting .vy-setting__menu").click(() => {
+        $(".vy-setting .vy-setting__menu").css("right", "-100%");
+        $(".vy-setting").fadeOut("fast");
+      })
+    }
   })
 }
