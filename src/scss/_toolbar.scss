@@ -1,4 +1,3 @@
-
 .vy-toolbar {
   position: absolute;
   bottom: 0;
@@ -20,59 +19,67 @@
   background: center no-repeat;
   background-size: 2em;
   transition: background-position .2s;
-  
+
   &.is-pen {
     background-image: url("/asset/img/pen-black.svg");
-  }
+
+    &.is-red {
+      background-image: url("/asset/img/pen-red.svg");
+    }
   
-  &.is-pen.is-red {
-    background-image: url("/asset/img/pen-red.svg");
-  }
+    &.is-green {
+      background-image: url("/asset/img/pen-green.svg");
+    }
   
-  &.is-pen.is-green {
-    background-image: url("/asset/img/pen-green.svg");
-  }
+    &.is-blue {
+      background-image: url("/asset/img/pen-blue.svg");
+    }
   
-  &.is-pen.is-blue {
-    background-image: url("/asset/img/pen-blue.svg");
+    &.is-rgb {
+      background-image: url("/asset/img/pen-rgb.svg");
+    }
   }
-  
-  &.is-pen.is-rgb {
-    background-image: url("/asset/img/pen-rgb.svg");
-  }
-  
+
   &.is-highlighter {
     background-image: url("/asset/img/highlighter-yellow.svg");
+
+    &.is-red {
+      background-image: url("/asset/img/highlighter-red.svg");
+    }
+
+    &.is-green {
+      background-image: url("/asset/img/highlighter-green.svg");
+    }
+
+    &.is-blue {
+      background-image: url("/asset/img/highlighter-blue.svg");
+    }
+
+    &.is-rgb {
+      background-image: url("/asset/img/highlighter-rgb.svg");
+    }
   }
-  
-  &.is-highlighter.is-red {
-    background-image: url("/asset/img/highlighter-red.svg");
-  }
-  
-  &.is-highlighter.is-green {
-    background-image: url("/asset/img/highlighter-green.svg");
-  }
-  
-  &.is-highlighter.is-blue {
-    background-image: url("/asset/img/highlighter-blue.svg");
-  }
-  
-  &.is-highlighter.is-rgb {
-    background-image: url("/asset/img/highlighter-rgb.svg");
-  }
-  
+
   &.is-eraser {
     background-image: url("/asset/img/eraser.svg");
+
+    &.is-fine {
+      background-image: url("/asset/img/eraser-fine.svg");
+    }
+
+    &.is-block {
+      background-image: url("/asset/img/eraser-block.svg");
+    }
   }
-  
+
   &.is-add {
     background-image: url("/asset/img/add.svg");
   }
-  
+
   &.is-more {
-    background-image: url("/asset/img/more.svg");
+    background-image: url("/asset/img/more--vertical.svg");
   }
-  
+
   &.is-done {
     background-image: url("/asset/img/done.svg");
   }
@@ -87,10 +94,11 @@
 .vy-toolbar {
   &.is-level-2 {
     .vy-tool {
+
       &.is-pen,
       &.is-eraser,
       &.is-highlighter {
-        &:not(.is-active) {
+        &:not(.is-active):not(.is-fine):not(.is-block) {
           background-position: center 5px;
           border: .5em solid #fcfcfc;
         }

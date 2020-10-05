@@ -1,7 +1,18 @@
 <div class="vy-container is-home">
-  <button class="vy-button is-primary">Create New Whiteboard</button>
-  <hr>
-  <p class="is-subtle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, eum!</p>
-  <button class="vy-button">Sign up</button>
-  <button class="vy-button is-tertiary">Login</button>
+  <div class="vy-whiteboard__item">
+    <div class="vy-whiteboard__item__preview">
+      <div class="vy-tag-group">
+        <div class="vy-tag">dolor</div>
+        <div class="vy-tag">ipsum</div>
+      </div>
+    </div>
+    <div class="vy-whiteboard__item__footer">
+      <div class="vy-whiteboard__item__footer__title">Lorem, ipsum.</div>
+      <div class="vy-whiteboard__item__footer__timestamp" style="font-size: .75em; color: #bfbfbf;">Last edited 4 August, 2020</div>
+      <button class="vy-whiteboard__item__footer__action"></button>
+    </div>
+  </div>
+  <p class="is-subtle has-margin--top">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, eum!</p>
+  <button class="vy-button is-primary" onclick="state.login = 1; initializeHome()">Sign up</button>
+  <button class="vy-button is-tertiary" onclick="state.login = 1; initializeHome()" style="font-weight: bold; border: 0;">Login</button>
 </div>
