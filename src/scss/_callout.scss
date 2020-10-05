@@ -17,6 +17,11 @@
     grid-template-columns: 2em;
     grid-auto-rows: 2em;
   }
+
+  &.is-eraser {
+    grid-template-columns: 2em;
+    grid-auto-rows: 2em;
+  }
 }
 
 .vy-color {

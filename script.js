@@ -25,15 +25,27 @@ function loadContent(argument) {
 }
 
 function initializeHome() {
-  loadContent({
-    file: "/page/home/zero.html",
-    parent: document.querySelector(".vy-app"),
-    callback: () => {
-      $(".vy-app .vy-button.is-primary").click(() => {
-        initializeWhiteboard();
-      })
-    }
-  })
+  if (state.login === 0) {
+    loadContent({
+      file: "/page/home/zero.html",
+      parent: document.querySelector(".vy-app"),
+      callback: () => {
+        $(".vy-whiteboard__item").click(() => {
+          initializeWhiteboard();
+        })
+      }
+    })
+  } else {
+    loadContent({
+      file: "/page/home/content.html",
+      parent: document.querySelector(".vy-app"),
+      callback: () => {
+        $(".vy-whiteboard__item").click(() => {
+          initializeWhiteboard();
+        })
+      }
+    })
+  }
 }
 
 function initializeWhiteboard() {
@@ -49,8 +61,25 @@ function initializeWhiteboard() {
 }
 
 function initializeMenu() {
-  $(".vy-menu.vy-back").click(() => {
+  $(".vy-menu.is-back").click(() => {
     initializeHome()
+  })
+
+  $(".vy-menu.is-add").click(() => {
+    loadContent({
+      file: "/page/whiteboard/toast/link.html",
+      parent: document.querySelector(".vy-toast"),
+      callback: () => {
+        $(".vy-toast").addClass("is-success");
+        $(".vy-toast").fadeIn("fast");
+
+        setTimeout(() => {
+          $(".vy-toast").fadeOut("fast", () => {
+            $(".vy-toast").removeClass("is-success");
+          });
+        }, 2000);
+      }
+    })
   })
 
   $(".vy-menu.is-setting").click(() => {
@@ -59,9 +88,19 @@ function initializeMenu() {
 }
 
 function initializeToast() {
-  $(".vy-toast button").click(() => {
-    $(".vy-toast").fadeOut("fast");
-  })
+  if (state.login === 0) {
+    loadContent({
+      file: "/page/whiteboard/toast/login.html",
+      parent: document.querySelector(".vy-toast"),
+      callback: () => {
+        $(".vy-toast").fadeIn("fast");
+
+        $(".vy-toast button").click(() => {
+          $(".vy-toast").fadeOut("fast");
+        })
+      }
+    })
+  }
 }
 
 function initializeToolbar() {
@@ -88,6 +127,8 @@ function initializeTool(tool) {
     document.querySelectorAll(".vy-toolbar.is-level-2 .vy-tool")[state.tool.pen].classList.add("is-active");
   } else if (tool === "highlighter") {
     document.querySelectorAll(".vy-toolbar.is-level-2 .vy-tool")[state.tool.highlighter].classList.add("is-active");
+  } else if (tool === "eraser") {
+    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-tool")[state.tool.eraser].classList.add("is-active");
   }
 
   $(".vy-tool.is-done").click(() => {
@@ -106,12 +147,17 @@ function initializeTool(tool) {
         state.tool.pen = $(event.target).index();
       } else if (tool === "highlighter") {
         state.tool.highlighter = $(event.target).index();
+      } else if (tool === "eraser") {
+        state.tool.eraser = $(event.target).index();
       }
     }
   })
 
   $(".vy-toolbar.is-level-2 .vy-tool.is-rgb").click((event) => {
     $(".vy-callout").slideUp("fast", () => {
+      $(".vy-callout").removeClass("is-eraser");
+      $(".vy-callout").removeClass("is-more");
+      $(".vy-callout").removeClass("is-rgb");
       $(".vy-callout").addClass("is-rgb");
 
       loadContent({
@@ -122,9 +168,7 @@ function initializeTool(tool) {
           $(".vy-callout").slideDown("fast");
 
           $(".vy-callout.is-rgb").click(() => {
-            $(".vy-callout").slideUp("fast", () => {
-              $(".vy-callout").removeClass("is-rgb");
-            });
+            $(".vy-callout").slideUp("fast");
           })
         }
       })
@@ -132,13 +176,38 @@ function initializeTool(tool) {
   })
 
   $(".vy-toolbar.is-level-2 .vy-tool.is-eraser").click((event) => {
-    $(".vy-callout").slideUp("fast");
-    $(".vy-tool.is-active").removeClass("is-active");
-    $(event.target).addClass("is-active");
+    if (!event.target.classList.contains('is-fine') && !event.target.classList.contains('is-block')) {
+      $(".vy-callout").slideUp("fast", () => {
+        $(".vy-callout").removeClass("is-eraser");
+        $(".vy-callout").removeClass("is-more");
+        $(".vy-callout").removeClass("is-rgb");
+        $(".vy-callout").addClass("is-eraser");
+
+        loadContent({
+          file: `/page/whiteboard/callout/eraser.html`,
+          parent: document.querySelector(".vy-callout"),
+          callback: () => {
+            $(`.vy-toolbar.is-level-2 .vy-tool.is-active`).removeClass("is-active");
+            $(event.target).addClass("is-active");
+            $(".vy-callout").css("left", `calc(${$(event.target).position().left}px - .25em)`);
+            $(".vy-callout").slideDown("fast");
+
+            $(".vy-callout.is-eraser").click(() => {
+              $(".vy-callout").slideUp("fast");
+            })
+          }
+        })
+      });
+    } else {
+
+    }
   })
 
   $(".vy-toolbar.is-level-2 .vy-tool.is-more").click((event) => {
     $(".vy-callout").slideUp("fast", () => {
+      $(".vy-callout").removeClass("is-eraser");
+      $(".vy-callout").removeClass("is-more");
+      $(".vy-callout").removeClass("is-rgb");
       $(".vy-callout").addClass("is-more");
 
       loadContent({
@@ -151,9 +220,7 @@ function initializeTool(tool) {
 
 
           $(".vy-callout.is-more").click(() => {
-            $(".vy-callout").slideUp("fast", () => {
-              $(".vy-callout").removeClass("is-more");
-            });
+            $(".vy-callout").slideUp("fast");
             $(".vy-tool.is-more.is-active").removeClass("is-active");
           })
         }
