@@ -1,0 +1,128 @@
+.vy-toolbar {
+  position: absolute;
+  bottom: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 0fr;
+  grid-template-rows: 2.5em;
+  grid-column-gap: .5em;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: .5em .5em 0 0;
+  width: fit-content;
+  padding: .5em .5em;
+  background-color: #f2f5fb;
+  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
+}
+
+.vy-toolbar__divider {
+  border-left: 1px solid #cfcfcf;
+}
+
+.vy-tool {
+  border-radius: .25em;
+  width: 2.5em;
+  background: center no-repeat;
+  background-size: 2em;
+  transition: background-position .2s;
+
+  &.is-pen {
+    background-image: url("/asset/img/pen-black.svg");
+
+    &.is-red {
+      background-image: url("/asset/img/pen-red.svg");
+    }
+  
+    &.is-green {
+      background-image: url("/asset/img/pen-green.svg");
+    }
+  
+    &.is-blue {
+      background-image: url("/asset/img/pen-blue.svg");
+    }
+  
+    &.is-rgb {
+      background-image: url("/asset/img/pen-rgb.svg");
+    }
+  }
+
+  &.is-highlighter {
+    background-image: url("/asset/img/highlighter-yellow.svg");
+
+    &.is-red {
+      background-image: url("/asset/img/highlighter-red.svg");
+    }
+
+    &.is-green {
+      background-image: url("/asset/img/highlighter-green.svg");
+    }
+
+    &.is-blue {
+      background-image: url("/asset/img/highlighter-blue.svg");
+    }
+
+    &.is-rgb {
+      background-image: url("/asset/img/highlighter-rgb.svg");
+    }
+  }
+
+  &.is-eraser {
+    background-image: url("/asset/img/eraser.svg");
+
+    &.is-fine {
+      background-image: url("/asset/img/eraser-fine.svg");
+    }
+
+    &.is-block {
+      background-image: url("/asset/img/eraser-block.svg");
+    }
+  }
+
+  &.is-add {
+    background-image: url("/asset/img/add.svg");
+  }
+
+  &.is-more {
+    background-image: url("/asset/img/more--vertical.svg");
+  }
+
+  &.is-done {
+    background-image: url("/asset/img/done.svg");
+  }
+
+  &.is-undo {
+    right: calc(50% + .125em);
+    border: 0;
+    background-image: url("/asset/img/undo.svg");
+    box-shadow: none;
+  }
+
+  &.is-redo {
+    left: calc(50% + .125em);
+    border: 0;
+    background-image: url("/asset/img/redo.svg");
+    box-shadow: none;
+  }
+}
+
+.vy-tool {
+  &.is-active {
+    background-color: #e2e2fc;
+  }
+}
+
+.vy-toolbar {
+  &.is-level-2 {
+    .vy-tool {
+
+      &.is-pen,
+      &.is-eraser,
+      &.is-highlighter {
+        &:not(.is-active):not(.is-fine):not(.is-block) {
+          background-position: center .15em;
+          border: .5em solid #f2f5fb;
+        }
+      }
+    }
+  }
+}

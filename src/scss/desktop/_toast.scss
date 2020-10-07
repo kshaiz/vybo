@@ -1,0 +1,36 @@
+.vy-toast {
+  position: absolute;
+  top: 1em;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #eaea15;
+  border-radius: .25em;
+  padding: .5em;
+  width: fit-content;
+  max-width: 60%;
+  text-align: center;
+  background: #ffffde;
+
+  &.is-success {
+    background: #e3ffce;
+    border-color: #9ede6f;
+  }
+}
+
+.vy-toast__content {
+  flex: 1;
+  font-size: .75em;
+}
+
+button.vy-toast__dismiss {
+  flex: 0;
+  margin-left: .25em;
+  border: 0;
+  height: 1.25em;
+  min-width: 1.25em;
+  background-color: transparent;
+  background-image: url("/asset/img/close.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: .625em;
+}

@@ -1,0 +1,43 @@
+.vy-menu-bar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 1em;
+  margin-left: auto;
+  margin-right: 1em;
+}
+
+.vy-menu {
+  --vy-menu--dimension: 2em;
+  --vy-menu--spacing: .5em;
+
+  top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100em;
+  height: var(--vy-menu--dimension);
+  width: var(--vy-menu--dimension);
+  background-color: #fcfcfc;
+  background: center no-repeat;
+  background-size: 1.25em;
+  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
+
+  &.is-add {
+    right: calc(1em + var(--vy-menu--dimension) + var(--vy-menu--spacing));
+    background-image: url("/asset/img/add-user.svg");
+  }
+
+  &.is-setting {
+    right: 1em;
+    background-image: url("/asset/img/setting.svg");
+  }
+
+  &.is-user {
+    height: auto;
+    width: auto;
+    padding: .5em 1em;
+    font-size: .75em;
+    background-color: #6236ff;
+    color: white;
+  }
+}
