@@ -1,0 +1,85 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// @import "compass/reset";
+@import "mobile/common.scss";
+@import "mobile/home.scss";
+@import "mobile/menu.scss";
+@import "mobile/toast.scss";
+@import "mobile/toolbar.scss";
+@import "mobile/callout.scss";
+@import "mobile/setting.scss";
+
+
+:root {
+  --c-border: #e7e7e7;
+  --c-font-color: #3a3a3a;
+}
+
+.vy-button {
+  border-radius: .25em;
+  padding: .75em;
+}
+
+.vy-button.is-primary {
+  border: 0;
+  background-color: #6236ff;
+  color: rgba(255, 255, 255, .75);
+  font-weight: bold;
+  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
+}
+
+.vy-whiteboard__item {
+  border: 1px solid #e7e7e7;
+  border-radius: .25em;
+  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
+}
+
+.vy-whiteboard__item__preview {
+  position: relative;
+  height: 12em;
+}
+
+.vy-whiteboard__item__footer {
+  position: relative;
+  border-top: 1px solid #e7e7e7;
+  width: 100%;
+  padding: .5em .75em;
+}
+
+.vy-whiteboard__item__footer__title {
+  font-size: 1em;
+  // color: #6236ff;
+}
+
+.vy-tag-group {
+  position: absolute;
+  left: .75em;
+  bottom: .75em;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 0fr;
+  grid-column-gap: .5em;
+}
+
+.vy-tag {
+  padding: .25em .75em;
+  background: gray;
+  border-radius: 100em;
+  font-size: .75em;
+  color: white
+}
+
+button.vy-whiteboard__item__footer__action {
+  background-image: url("/asset/img/more--vertical.svg");
+  position: absolute;
+  height: 2em;
+  background-size: 2em;
+  background-position: center;
+  right: .75em;
+  top: .75em;
+  border: 0;
+  background-color: transparent;
+}

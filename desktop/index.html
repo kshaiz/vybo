@@ -3,26 +3,49 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Vybo Mobile App</title>
+  <title>Vybo Desktop App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-  <link rel="stylesheet" href="/asset/css/style.css">
+  <link rel="stylesheet" href="/asset/css/desktop.css">
   <meta http-equiv='cache-control' content='no-cache'>
   <meta http-equiv='expires' content='0'>
   <meta http-equiv='pragma' content='no-cache'>
-
+  <style>
+    .vy-toolbar-d {
+      width: 8em;
+      height: 100%;
+      background: transparent;
+      grid-area: toolbar;
+      position: relative;
+      border: 0;
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+      /* box-shadow: 0 0 0.25em 1px rgba(0, 0, 0, 0.25); */
+    }
+  </style>
 </head>
 
 <body>
+  <div class="vy-header">
+    <div class="vy-logo"></div>
+    <div class="vy-title">Untitled Whiteboard</div>
+    <div class="vy-menu-bar">
+      <div class="vy-menu is-add"></div>
+      <div class="vy-menu is-setting"></div>
+      <div class="vy-menu is-user">John Doe</div>
+    </div>
+  </div>
   <div class="vy-app"></div>
+  
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
     integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
   </script>
-  <script src="/script.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>

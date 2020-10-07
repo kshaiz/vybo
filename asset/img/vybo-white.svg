@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>witeboard_corner logo</title>
+    <g id="Login-Signup-Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="witeboard_corner-logo">
+            <rect id="Rectangle" fill="#2A303E" x="0" y="0" width="32" height="32" rx="16"></rect>
+            <g id="Group-35-Copy" transform="translate(8.000000, 8.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M16,0 L16,16 L0.00119394298,16 L0.00119394298,0 L16,0 Z M14.4054187,9.29013123 L4.17584512,14.4052997 L14.4054187,14.4052997 L14.4054187,9.29013123 Z M8.00059697,8.79734614 C5.38025196,8.79734614 3.05417174,7.53735477 1.59508606,5.59014452 L1.59519394,13.912 L14.4051939,7.506 L14.4069213,5.58905884 C12.9478868,7.53688641 10.621429,8.79734614 8.00059697,8.79734614 Z M14.3563297,1.59434932 L1.64491185,1.59473267 C2.03743192,4.75598647 4.73331087,7.20265386 8.00059697,7.20265386 C11.2680151,7.20265386 13.96398,4.75578867 14.3563297,1.59434932 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
