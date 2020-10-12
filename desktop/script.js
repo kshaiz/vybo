@@ -1,5 +1,6 @@
 $(document).ready(() => {
-  initializeWhiteboard();
+  // initializeWhiteboard();
+  initializeHome();
 });
 
 let state = {
@@ -24,17 +25,17 @@ function loadContent(argument) {
   });
 }
 
-// function initializeHome() {
+function initializeHome() {
 //   if (state.login === 0) {
-//     loadContent({
-//       file: "./page/home/zero.html",
-//       parent: document.querySelector(".vy-app"),
-//       callback: () => {
-//         $(".vy-whiteboard__item").click(() => {
-//           initializeWhiteboard();
-//         })
-//       }
-//     })
+    loadContent({
+      file: "./page/home/zero.html",
+      parent: document.querySelector(".vy-app"),
+      callback: () => {
+        $(".vy-whiteboard__item").click(() => {
+          initializeWhiteboard();
+        })
+      }
+    })
 //   } else {
 //     loadContent({
 //       file: "./page/home/content.html",
@@ -46,46 +47,46 @@ function loadContent(argument) {
 //       }
 //     })
 //   }
-// }
+}
 
 function initializeWhiteboard() {
   loadContent({
     file: "./page/app/content.html",
     parent: document.querySelector(".vy-app"),
     callback: () => {
-      // initializeMenu();
+      initializeMenu();
       initializeToast();
       initializeToolbar();
     }
   })
 }
 
-// function initializeMenu() {
-//   $(".vy-menu.is-back").click(() => {
-//     initializeHome()
-//   })
+function initializeMenu() {
+  $(".vy-logo").click(() => {
+    initializeHome();
+  })
 
-//   $(".vy-menu.is-add").click(() => {
-//     loadContent({
-//       file: "./page/app/toast/link.html",
-//       parent: document.querySelector(".vy-toast"),
-//       callback: () => {
-//         $(".vy-toast").addClass("is-success");
-//         $(".vy-toast").fadeIn("fast");
+  // $(".vy-menu.is-add").click(() => {
+  //   loadContent({
+  //     file: "./page/app/toast/link.html",
+  //     parent: document.querySelector(".vy-toast"),
+  //     callback: () => {
+  //       $(".vy-toast").addClass("is-success");
+  //       $(".vy-toast").fadeIn("fast");
 
-//         setTimeout(() => {
-//           $(".vy-toast").fadeOut("fast", () => {
-//             $(".vy-toast").removeClass("is-success");
-//           });
-//         }, 2000);
-//       }
-//     })
-//   })
+  //       setTimeout(() => {
+  //         $(".vy-toast").fadeOut("fast", () => {
+  //           $(".vy-toast").removeClass("is-success");
+  //         });
+  //       }, 2000);
+  //     }
+  //   })
+  // })
 
-//   $(".vy-menu.is-setting").click(() => {
-//     initializeSetting();
-//   })
-// }
+  // $(".vy-menu.is-setting").click(() => {
+  //   initializeSetting();
+  // })
+}
 
 function initializeToast() {
   if (state.login === 0) {

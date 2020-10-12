@@ -1,9 +1,69 @@
-.vy-container {
-  &.is-home {
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: 0fr;
-    grid-row-gap: 1em;
-    padding: 5em 1em 1em;
-  }
+// .vy-container {
+//   height: 100%;
+//   padding: 2em;
+//   max-width: 1200px;
+//   width: 80%;
+// }
+
+// .vy-container__recent {
+//   display: grid;
+//   grid-auto-flow: column;
+//   grid-auto-columns: 1fr;
+//   grid-column-gap: 1em;
+// }
+
+
+.vy-whiteboard__preview {
+  position: relative;
+  border: 1px solid #e7e7e7;
+  border-radius: .25em;
+  height: 180px;
+  max-width: 320px;
+  box-shadow: 0 0 .75em .1em rgba(0, 0, 0, .15);
+}
+
+.vy-whiteboard__preview__canvas {
+  position: relative;
+  height: 100%;
+  background-color: white;
+}
+
+.vy-whiteboard__preview__footer {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #e7e7e7;
+  width: 100%;
+  padding: .5em .75em;
+}
+
+.vy-whiteboard__preview__footer__title {
+  font-size: 1em;
+  // color: #6236ff;
+}
+
+.vy-tag-group {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 0fr;
+  grid-column-gap: .5em;
+}
+
+.vy-tag {
+  padding: .25em .75em;
+  background: gray;
+  border-radius: 100em;
+  font-size: .75em;
+  color: white
+}
+
+button.vy-whiteboard__item__footer__action {
+  background-image: url("/asset/img/more--vertical.svg");
+  position: absolute;
+  height: 2em;
+  background-size: 2em;
+  background-position: center;
+  right: .75em;
+  top: .75em;
+  border: 0;
+  background-color: transparent;
 }
