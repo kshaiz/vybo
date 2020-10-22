@@ -61,18 +61,45 @@
     background-color: white;
   }
 
+  @media screen and (min-width: 1400px) {
+    .vy-home {
+      width: 1400px;
+    }
+
+    .vy-home__list__item {
+      grid-template-columns: 1fr 380px 180px 40px;
+    }
+
+    .vy-home__recent {
+      grid-auto-columns: 326px;
+      grid-template-rows: 210px;
+    }
+  }
+
+  @media screen and (max-width: 1399px) {
+    .vy-home {
+      width: 900px;
+    }
+
+    .vy-home__recent {
+      grid-auto-columns: 209px;
+      grid-template-rows: 130px;
+    }
+
+    .vy-home__list__item {
+      grid-template-columns: 1fr 240px 140px 40px;
+    }
+  }
+
   .vy-home {
     height: 100%;
-    width: 1400px;
     margin: 0 auto;
   }
 
   .vy-home__recent {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 1fr;
     grid-column-gap: var(--spacing--large);
-    grid-template-rows: 180px;
   }
 
   .vy-home__recent>.vy-tile {
@@ -87,7 +114,7 @@
 
   .vy-home__list {
     display: grid;
-    grid-auto-flow: rows;
+    grid-auto-flow: row;
     grid-auto-rows: 0fr;
     grid-row-gap: .25em;
   }
@@ -95,208 +122,186 @@
   .vy-home__list__item {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: calc(800px - 3*var(--spacing)) 180px 380px 40px;
     grid-column-gap: var(--spacing);
     align-items: flex-start;
     padding: var(--spacing--small);
-    margin-left: calc(-1 * var(--spacing--small));
-    margin-right: calc(-1 * var(--spacing--small));
+    border-radius: .25em;
+  }
+
+  .vy-home__list__item:hover:not(.is-header) {
+    background-color: #f1eeff;
+  }
+
+  .vy-home__list__item>* {
+    font-size: 14px;
+  }
+
+  .vy-home__list__item.is-header {
+    font-weight: bold;
+  }
+
+  .menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #c7c7c7;
+    display: flex;
+    flex-direction: column;
+    border-radius: .25em;
+    font-size: .85em;
+    box-shadow: 0 0 .5em .1em rgba(0, 0, 0, .15);
+
+    top: calc(100% + .5em);
+    right: 0;
+  }
+
+  .menu>div {
+    padding: .5em 1em;
+    cursor: pointer;
+  }
+
+  .menu>div:hover {
+    background: #f1eeff;
   }
 </style>
-<div class="vy-container has-padding--large">
+<div class="vy-container has-padding--large" style="overflow: auto;">
   <div class="vy-home">
     <h4 class="has-font-color--gray">Recent Whiteboards</h4>
     <div class="vy-home__recent">
-      <div class="vy-tile is-create"></div>
+      <div class="vy-tile is-create" style="display: flex; align-items: center; justify-content: center;">
+        <div class="is-primary" style="
+        background: #c1b4ef;
+        /* color: white; */
+        padding: .25em .5em;
+        border-radius: .25em;
+    ">Create New Whiteboard</div>
+      </div>
       <div class="vy-tile"></div>
       <div class="vy-tile"></div>
       <div class="vy-tile"></div>
     </div>
-    <div class="has-margin--top--large has-margin--horizontal--auto" style="width: 50%;">
+    <!-- <div class="has-margin--top--large has-margin--horizontal--auto" style="width: 50%;">
       <input type="text" placeholder="Search for whiteboards" class="has-padding--small"
         style="width: 100%; border-radius: .25em;">
-    </div>
+    </div> -->
 
     <div class="vy-home__list has-margin--top--medium">
-      <div class="vy-home__list__item">
+      <h4 class="has-font-color--gray">All Whiteboards</h4>
+      <div class="vy-home__list__item is-header">
         <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
+          Name
         </div>
-        <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
+        <div class="vy-home__list__item__owner">Users</div>
+        <div class="vy-home__list__item__collaborator">Last Edited</div>
+        <div class="" style="    border-radius: .25em;
+        width: 2.5em;
+        height: 100%;"></div>
+      </div>
+      <div class="vy-home__list__item">
+        <div class="vy-home__list__item__title">Vybo</div>
+        <div class="vy-home__list__item__owner">John Doe, Jane Doe, Bob Smith + 3</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
         <div class="" style="    border-radius: .25em;
         width: 2.5em;
         background: center no-repeat;
-        background-position: top center;
+        background-position: top right;
+        background-size: 1.5em;
+        transition: background-position .2s;
+        background-image: url(/asset/img/more--vertical.svg);
+        height: 100%;;"></div>
+      </div>
+      <div class="vy-home__list__item">
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
+        <div class="vy-home__list__item__owner">John Doe</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
+        <div class="" style="    border-radius: .25em;
+        width: 2.5em;
+        background: center no-repeat;
+        background-position: top right;
+        background-size: 1.5em;
+        transition: background-position .2s;
+        background-image: url(/asset/img/more--vertical.svg);
+        height: 100%; position: relative">
+
+          <div class="menu">
+            <div>Rename</div>
+            <div>Share</div>
+            <div>Delete</div>
+          </div>
+        </div>
+      </div>
+      <div class="vy-home__list__item">
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
+        <div class="vy-home__list__item__owner">John Doe</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
+        <div class="" style="    border-radius: .25em;
+        width: 2.5em;
+        background: center no-repeat;
+        background-position: top right;
         background-size: 1.5em;
         transition: background-position .2s;
         background-image: url(/asset/img/more--vertical.svg);
         height: 100%;"></div>
       </div>
       <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
         <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
         <div class="" style="    border-radius: .25em;
         width: 2.5em;
         background: center no-repeat;
-        background-position: top center;
+        background-position: top right;
         background-size: 1.5em;
         transition: background-position .2s;
         background-image: url(/asset/img/more--vertical.svg);
         height: 100%;"></div>
       </div>
       <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
         <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
         <div class="" style="    border-radius: .25em;
         width: 2.5em;
         background: center no-repeat;
-        background-position: top center;
+        background-position: top right;
         background-size: 1.5em;
         transition: background-position .2s;
         background-image: url(/asset/img/more--vertical.svg);
         height: 100%;"></div>
       </div>
       <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
         <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
         <div class="" style="    border-radius: .25em;
         width: 2.5em;
         background: center no-repeat;
-        background-position: top center;
+        background-position: top right;
         background-size: 1.5em;
         transition: background-position .2s;
         background-image: url(/asset/img/more--vertical.svg);
         height: 100%;"></div>
       </div>
       <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
         <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
         <div class="" style="    border-radius: .25em;
         width: 2.5em;
         background: center no-repeat;
-        background-position: top center;
+        background-position: top right;
         background-size: 1.5em;
         transition: background-position .2s;
         background-image: url(/asset/img/more--vertical.svg);
         height: 100%;"></div>
       </div>
       <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
+        <div class="vy-home__list__item__title">Untitled Whiteboard</div>
         <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
+        <div class="vy-home__list__item__collaborator">28 November, 2020</div>
         <div class="" style="    border-radius: .25em;
         width: 2.5em;
         background: center no-repeat;
-        background-position: top center;
-        background-size: 1.5em;
-        transition: background-position .2s;
-        background-image: url(/asset/img/more--vertical.svg);
-        height: 100%;"></div>
-      </div>
-      <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
-        <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
-        <div class="" style="    border-radius: .25em;
-        width: 2.5em;
-        background: center no-repeat;
-        background-position: top center;
-        background-size: 1.5em;
-        transition: background-position .2s;
-        background-image: url(/asset/img/more--vertical.svg);
-        height: 100%;"></div>
-      </div>
-      <div class="vy-home__list__item">
-        <div class="vy-home__list__item__title">
-          <div class="has-display--flex is-column"
-            style="display: flex; flex-direction: row; align-items: center; height: 1.5em;">
-            <div>Untitled Whiteboard</div>
-            <div class="vy-tag-group has-margin--left">
-              <div class="vy-tag">Product</div>
-              <div class="vy-tag">Marketing</div>
-            </div>
-          </div>
-          <small class="is-subtle">Last edited 28 November, 2020</small>
-        </div>
-        <div class="vy-home__list__item__owner">John Doe</div>
-        <div class="vy-home__list__item__collaborator">Bob Smith, Mike Lee</div>
-        <div class="" style="    border-radius: .25em;
-        width: 2.5em;
-        background: center no-repeat;
-        background-position: top center;
+        background-position: top right;
         background-size: 1.5em;
         transition: background-position .2s;
         background-image: url(/asset/img/more--vertical.svg);

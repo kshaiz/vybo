@@ -53,37 +53,8 @@ function initializeWhiteboard() {
     file: "./page/whiteboard/content.html",
     parent: document.querySelector(".vy-app"),
     callback: () => {
-      initializeMenu();
       initializeToast();
-      initializeToolbar();
     }
-  })
-}
-
-function initializeMenu() {
-  $(".vy-menu.is-back").click(() => {
-    initializeHome()
-  })
-
-  $(".vy-menu.is-add").click(() => {
-    loadContent({
-      file: "./page/whiteboard/toast/link.html",
-      parent: document.querySelector(".vy-toast"),
-      callback: () => {
-        $(".vy-toast").addClass("is-success");
-        $(".vy-toast").fadeIn("fast");
-
-        setTimeout(() => {
-          $(".vy-toast").fadeOut("fast", () => {
-            $(".vy-toast").removeClass("is-success");
-          });
-        }, 2000);
-      }
-    })
-  })
-
-  $(".vy-menu.is-setting").click(() => {
-    initializeSetting();
   })
 }
 
@@ -103,44 +74,86 @@ function initializeToast() {
   }
 }
 
-function initializeToolbar() {
-  $(".vy-toolbar.is-level-1 .vy-tool").click((event) => {
-    let classList = $(event.target).attr("class");
-    let tool = classList.replace("vy-tool is-", "");
+function initializeHeader() {
+  $(".vy-header button.is-back").click(() => {
+    initializeHome()
+  })
 
+  $(".vy-header button.is-add").click(() => {
     loadContent({
-      file: `./page/whiteboard/toolbar/${tool}.html`,
-      parent: document.querySelector(".vy-toolbar.is-level-2"),
+      file: "./page/whiteboard/toast/link.html",
+      parent: document.querySelector(".vy-toast"),
       callback: () => {
-        initializeTool(tool);
-        $(".vy-toolbar.is-level-1").slideUp("fast");
-        $(".vy-toolbar.is-level-2").slideDown("fast");
+        $(".vy-toast").addClass("is-success");
+        $(".vy-toast").fadeIn("fast");
+
+        setTimeout(() => {
+          $(".vy-toast").fadeOut("fast", () => {
+            $(".vy-toast").removeClass("is-success");
+          });
+        }, 2000);
       }
     })
   })
 
+  $(".vy-header button.is-setting").click(() => {
+    initializeSetting();
+  })
+}
+
+function initializeSetting() {
+  loadContent({
+    file: "./page/whiteboard/setting/content.html",
+    parent: document.querySelector("#js-page-setting"),
+    callback: () => {
+      $("#js-page-setting").fadeIn("fast");
+      $("#js-page-setting .vy-menu__panel").css("right", "0");
+
+      $("#js-page-setting .vy-menu__panel").click(() => {
+        $("#js-page-setting .vy-menu__panel").css("right", "-100%");
+        $("#js-page-setting").fadeOut("fast");
+      })
+    }
+  })
+}
+
+function initializeToolbar() {
+  $(".vy-toolbar.is-level-1 .vy-toolbar__item").click((event) => {
+    let classList = $(event.target).attr("class");
+    let tool = classList.replace("vy-toolbar__item is-", "");
+
+    loadContent({
+      file: `./page/whiteboard/toolbar/level-2/${tool}.html`,
+      parent: document.querySelector("#js-page-toolbar-level-2"),
+      callback: () => {
+        initializeTool(tool);
+        $("#js-page-toolbar-level-1").slideUp("fast");
+        $("#js-page-toolbar-level-2").slideDown("fast");
+      }
+    })
+  })
 }
 
 function initializeTool(tool) {
-  $(`.vy-toolbar.is-level-2 .vy-tool.is-active`).removeClass("is-active");
+  $(`.vy-toolbar.is-level-2 .vy-toolbar__item.is-active`).removeClass("is-active");
   if (tool === "pen") {
-    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-tool")[state.tool.pen].classList.add("is-active");
+    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-toolbar__item")[state.tool.pen].classList.add("is-active");
   } else if (tool === "highlighter") {
-    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-tool")[state.tool.highlighter].classList.add("is-active");
+    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-toolbar__item")[state.tool.highlighter].classList.add("is-active");
   } else if (tool === "eraser") {
-    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-tool")[state.tool.eraser].classList.add("is-active");
+    document.querySelectorAll(".vy-toolbar.is-level-2 .vy-toolbar__item")[state.tool.eraser].classList.add("is-active");
   }
 
-  $(".vy-tool.is-done").click(() => {
-    $(".vy-toolbar.is-level-1 .vy-tool.is-active").removeClass("is-active");
-    $(".vy-callout").slideUp("fast");
+  $(".vy-toolbar__item.is-done").click(() => {
+    $(".vy-toolbar.is-level-1 .vy-toolbar__item.is-active").removeClass("is-active");
+    $("#js-page-callout").slideUp("fast");
     $(".vy-toolbar.is-level-2").slideUp("fast");
     $(".vy-toolbar.is-level-1").slideDown("fast");
   })
 
-  $(`.vy-toolbar.is-level-2 .vy-tool.is-${tool}`).click((event) => {
-    $(".vy-callout").slideUp("fast");
-    $(`.vy-toolbar.is-level-2 .vy-tool.is-active`).removeClass("is-active");
+  $(`.vy-toolbar.is-level-2 .vy-toolbar__item.is-${tool}`).click((event) => {
+    $("#js-page-callout").slideUp("fast");
+    $(`.vy-toolbar.is-level-2 .vy-toolbar__item.is-active`).removeClass("is-active");
     $(event.target).addClass("is-active");
     if ($(event.target).index() > 0 && $(event.target).index() < 6) {
       if (tool === "pen") {
@@ -153,47 +166,47 @@ function initializeTool(tool) {
     }
   })
 
-  $(".vy-toolbar.is-level-2 .vy-tool.is-rgb").click((event) => {
-    $(".vy-callout").slideUp("fast", () => {
-      $(".vy-callout").removeClass("is-eraser");
-      $(".vy-callout").removeClass("is-more");
-      $(".vy-callout").removeClass("is-rgb");
-      $(".vy-callout").addClass("is-rgb");
+  $(".vy-toolbar.is-level-2 .vy-toolbar__item.is-rgb").click((event) => {
+    $("#js-page-callout").slideUp("fast", () => {
+      $("#js-page-callout").removeClass("is-eraser");
+      $("#js-page-callout").removeClass("is-more");
+      $("#js-page-callout").removeClass("is-rgb");
+      $("#js-page-callout").addClass("is-rgb");
 
       loadContent({
         file: `./page/whiteboard/callout/rgb.html`,
-        parent: document.querySelector(".vy-callout"),
+        parent: document.querySelector("#js-page-callout"),
         callback: () => {
-          $(".vy-callout").css("left", `calc(${$(event.target).position().left}px - 2.75em)`);
-          $(".vy-callout").slideDown("fast");
+          $("#js-page-callout").css("left", `calc(${$(event.target).position().left}px - 2.75em)`);
+          $("#js-page-callout").slideDown("fast");
 
-          $(".vy-callout.is-rgb").click(() => {
-            $(".vy-callout").slideUp("fast");
+          $("#js-page-callout.is-rgb").click(() => {
+            $("#js-page-callout").slideUp("fast");
           })
         }
       })
     });
   })
 
-  $(".vy-toolbar.is-level-2 .vy-tool.is-eraser").click((event) => {
+  $(".vy-toolbar.is-level-2 .vy-toolbar__item.is-eraser").click((event) => {
     if (!event.target.classList.contains('is-fine') && !event.target.classList.contains('is-block')) {
-      $(".vy-callout").slideUp("fast", () => {
-        $(".vy-callout").removeClass("is-eraser");
-        $(".vy-callout").removeClass("is-more");
-        $(".vy-callout").removeClass("is-rgb");
-        $(".vy-callout").addClass("is-eraser");
+      $("#js-page-callout").slideUp("fast", () => {
+        $("#js-page-callout").removeClass("is-eraser");
+        $("#js-page-callout").removeClass("is-more");
+        $("#js-page-callout").removeClass("is-rgb");
+        $("#js-page-callout").addClass("is-eraser");
 
         loadContent({
           file: `./page/whiteboard/callout/eraser.html`,
-          parent: document.querySelector(".vy-callout"),
+          parent: document.querySelector("#js-page-callout"),
           callback: () => {
-            $(`.vy-toolbar.is-level-2 .vy-tool.is-active`).removeClass("is-active");
+            $(`.vy-toolbar.is-level-2 .vy-toolbar__item.is-active`).removeClass("is-active");
             $(event.target).addClass("is-active");
-            $(".vy-callout").css("left", `calc(${$(event.target).position().left}px - .25em)`);
-            $(".vy-callout").slideDown("fast");
+            $("#js-page-callout").css("left", `calc(${$(event.target).position().left}px - .25em)`);
+            $("#js-page-callout").slideDown("fast");
 
-            $(".vy-callout.is-eraser").click(() => {
-              $(".vy-callout").slideUp("fast");
+            $("#js-page-callout.is-eraser").click(() => {
+              $("#js-page-callout").slideUp("fast");
             })
           }
         })
@@ -203,44 +216,28 @@ function initializeTool(tool) {
     }
   })
 
-  $(".vy-toolbar.is-level-2 .vy-tool.is-more").click((event) => {
-    $(".vy-callout").slideUp("fast", () => {
-      $(".vy-callout").removeClass("is-eraser");
-      $(".vy-callout").removeClass("is-more");
-      $(".vy-callout").removeClass("is-rgb");
-      $(".vy-callout").addClass("is-more");
+  $(".vy-toolbar.is-level-2 .vy-toolbar__item.is-more").click((event) => {
+    $("#js-page-callout").slideUp("fast", () => {
+      $("#js-page-callout").removeClass("is-eraser");
+      $("#js-page-callout").removeClass("is-more");
+      $("#js-page-callout").removeClass("is-rgb");
+      $("#js-page-callout").addClass("is-more");
 
       loadContent({
         file: `./page/whiteboard/callout/more.html`,
-        parent: document.querySelector(".vy-callout"),
+        parent: document.querySelector("#js-page-callout"),
         callback: () => {
-          $(".vy-callout").css("left", `calc(${$(event.target).position().left}px - .25em)`);
-          $(".vy-callout").slideDown("fast");
+          $("#js-page-callout").css("left", `calc(${$(event.target).position().left}px - .25em)`);
+          $("#js-page-callout").slideDown("fast");
           $(event.target).addClass("is-active");
 
 
-          $(".vy-callout.is-more").click(() => {
-            $(".vy-callout").slideUp("fast");
-            $(".vy-tool.is-more.is-active").removeClass("is-active");
+          $("#js-page-callout.is-more").click(() => {
+            $("#js-page-callout").slideUp("fast");
+            $(".vy-toolbar__item.is-more.is-active").removeClass("is-active");
           })
         }
       })
     });
-  })
-}
-
-function initializeSetting() {
-  loadContent({
-    file: "./page/whiteboard/setting/content.html",
-    parent: document.querySelector(".vy-setting"),
-    callback: () => {
-      $(".vy-setting").fadeIn("fast");
-      $(".vy-setting .vy-setting__menu").css("right", "0");
-
-      $(".vy-setting .vy-setting__menu").click(() => {
-        $(".vy-setting .vy-setting__menu").css("right", "-100%");
-        $(".vy-setting").fadeOut("fast");
-      })
-    }
   })
 }

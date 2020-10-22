@@ -1,0 +1,58 @@
+.vy-header {
+  --button-dimension: 2.5em;
+
+  position: relative;
+  border-bottom: 1px solid var(--c1);
+  height: calc(2*var(--spacing--medium) + var(--button-dimension));
+  background-color: var(--c4);
+
+  button {
+    position: absolute;
+    top: var(--spacing--medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--c1);
+    border-radius: 100em;
+    height: var(--button-dimension);
+    width: var(--button-dimension);
+    background-color: var(--c3);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: calc(var(--button-dimension) - 2 * var(--spacing));
+    box-shadow: 0 0 var(--shadow-blur) var(--shadow-spread) var(--c2);
+
+    &.is-undo,
+    &.is-redo {
+      border: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    &.is-back {
+      left: var(--spacing--medium);
+      background-image: url("/asset/img/back.svg");
+    }
+
+    &.is-undo {
+      right: calc(50% + var(--spacing--small));
+      background-image: url("/asset/img/undo.svg");
+    }
+
+    &.is-redo {
+      left: calc(50% + var(--spacing--small));
+      background-image: url("/asset/img/redo.svg");
+    }
+
+
+    &.is-add {
+      right: calc(2 * var(--spacing--medium) + var(--button-dimension));
+      background-image: url("/asset/img/add-user.svg");
+    }
+
+    &.is-setting {
+      right: var(--spacing--medium);
+      background-image: url("/asset/img/setting.svg");
+    }
+  }
+}

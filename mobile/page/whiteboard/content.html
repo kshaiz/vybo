@@ -1,22 +1,32 @@
 <!-- Header Actions -->
-<div class="vy-menu is-back"></div>
-<div class="vy-menu is-undo" disabled></div>
-<div class="vy-menu is-redo" disabled></div>
-<div class="vy-menu is-add"></div>
-<div class="vy-menu is-setting"></div>
-
+<div class="vy-header" id="js-page-header"></div>
 <!-- Toast Container -->
 <div class="vy-toast" style="display: none"></div>
 
 <!-- Toolbars -->
-<div class="vy-toolbar is-level-1">
-  <div class="vy-tool is-pen"></div>
-  <div class="vy-tool is-highlighter"></div>
-  <div class="vy-tool is-eraser"></div>
-  <div class="vy-tool is-add"></div>
-</div>
-<div class="vy-toolbar is-level-2" style="display: none"></div>  
-<div class="vy-callout" style="display: none"></div>
+<div class="vy-toolbar is-level-1" id="js-page-toolbar-level-1"></div>
+<div class="vy-toolbar is-level-2" id="js-page-toolbar-level-2" style="display: none"></div>
+<div class="vy-callout" id="js-page-callout" style="display: none"></div>
 
 <!-- Settings -->
-<div class="vy-setting" style="display: none;"></div>
+<div class="vy-menu" id="js-page-setting" style="display: none;"></div>
+
+<script>
+  (() => {
+    loadContent({
+      file: "./page/whiteboard/header/content.html",
+      parent: document.querySelector("#js-page-header"),
+      callback: () => {
+        initializeHeader();
+      }
+    });
+
+    loadContent({
+      file: "./page/whiteboard/toolbar/level-1/content.html",
+      parent: document.querySelector("#js-page-toolbar-level-1"),
+      callback: () => {
+        initializeToolbar();
+      }
+    })
+  })()
+</script>

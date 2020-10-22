@@ -1,0 +1,47 @@
+.vy-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.5);
+
+  button.is-dismiss {
+    flex: 0;
+    margin-left: .25em;
+    border: 0;
+    height: 1.25em;
+    min-width: 1.25em;
+    background-color: transparent;
+    background-image: url("/asset/img/close-white.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: .75em;
+  }
+}
+
+.vy-menu__panel {
+  position: absolute;
+
+  &.is-aligned--right {
+    height: 100%;
+    width: 75%;
+    background: #6236ff;
+    color: rgba(255,255,255,.75);
+    transition: right .2s, top .2s;
+  }
+
+  &.is-aligned--bottom {
+    bottom: 0;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    width: 100%;
+    background-color: var(--c4);
+  }
+}
+
+.vy-menu__section {
+  padding: var(--spacing--medium) var(--spacing--large);
+  border-top: 1px solid rgba(255,255,255, .25);
+  font-size: .85em;
+}

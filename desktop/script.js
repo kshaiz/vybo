@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  // initializeWhiteboard();
-  initializeHome();
+  initializeWhiteboard();
+  // initializeHome();
 });
 
 let state = {

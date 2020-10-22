@@ -1,0 +1,38 @@
+.vy-toast {
+  position: absolute;
+  left: var(--spacing);
+  top: calc(10 * var(--spacing));
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--c5);
+  border-radius: .25em;
+  padding: .5em;
+  width: calc(100% - 2 * var(--spacing));
+  text-align: center;
+  background: var(--c6);
+
+  button.is-dismiss {
+    --button-dimension: 1.25em;
+
+    flex: 0;
+    margin-left: var(--spacing--small);
+    border: 0;
+    height: var(--button-dimension);
+    min-width: var(--button-dimension);
+    background-color: transparent;
+    background-image: url("/asset/img/close.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: calc(var(--button-dimension) / 2);
+  }
+
+  &.is-success {
+    background: var(--c7);
+    border-color: var(--c8);
+  }
+}
+
+.vy-toast__content {
+  flex: 1;
+  font-size: .75em;
+}

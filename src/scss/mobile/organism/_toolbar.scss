@@ -1,22 +1,25 @@
 .vy-toolbar {
+  --dimension: 2.5em;
+
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 2.5em;
-  grid-template-rows: 2.5em;
-  grid-column-gap: .15em;
+  grid-auto-columns: var(--dimension);
+  grid-template-rows: var(--dimension);
+  grid-column-gap: var(--spacing--small);
   justify-content: center;
-  padding: .5em .5em;
-  background-color: #fcfcfc;
   border-top: 1px solid #e7e7e7;
+  padding: var(--spacing);
+  background-color: var(--c4);
 }
 
-.vy-tool {
-  border-radius: .25em;
-  background: center no-repeat;
+.vy-toolbar__item {
+  border-radius: var(--border-radius);
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 2em;
   transition: background-position .2s;
 
@@ -85,22 +88,21 @@
   }
 }
 
-.vy-tool {
+.vy-toolbar__item {
   &.is-active {
-    background-color: #e2e2fc;
+    background-color: var(--c9);
   }
 }
 
 .vy-toolbar {
   &.is-level-2 {
-    .vy-tool {
-
+    .vy-toolbar__item {
       &.is-pen,
       &.is-eraser,
       &.is-highlighter {
         &:not(.is-active):not(.is-fine):not(.is-block) {
-          background-position: center 5px;
-          border: .5em solid #fcfcfc;
+          background-position: center var(--spacing--small);
+          border: .5em solid var(--c4);
         }
       }
     }

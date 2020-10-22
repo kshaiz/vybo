@@ -6,16 +6,37 @@
 // @import "compass/reset";
 @import "mobile/common.scss";
 @import "mobile/home.scss";
-@import "mobile/menu.scss";
-@import "mobile/toast.scss";
-@import "mobile/toolbar.scss";
 @import "mobile/callout.scss";
-@import "mobile/setting.scss";
 
+
+@import "mobile/atom/button.scss";
+
+@import "mobile/molecule/header.scss";
+
+@import "mobile/organism/menu.scss";
+@import "mobile/organism/toast.scss";
+@import "mobile/organism/toolbar.scss";
 
 :root {
   --c-border: #e7e7e7;
+  --border-radius: .25em;
   --c-font-color: #3a3a3a;
+
+  --shadow-blur: .75em;
+  --shadow-spread: .1em;
+  --c1: #{rgba(0, 0, 0, .1)};
+  --c2: #{rgba(0, 0, 0, .15)};
+  --c3: #{rgba(255, 255, 255, .25)};
+  --c4: #fcfcfc;
+  --c5: #eaea15;
+  --c6: #ffffde;
+  --c7: #e3ffce;
+  --c8: #9ede6f;
+  --c9: #e2e2fc;
+  --spacing: .5em;
+  --spacing--small: .25em;
+  --spacing--medium: 1em;
+  --spacing--large: 2em;
 }
 
 .vy-button {
